@@ -39,15 +39,7 @@ export default function Footer() {
             >
               <Mail className="size-4" strokeWidth={1.75} />
             </a>
-            <a
-              href={SITE.social.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="flex size-10 items-center justify-center rounded-full border border-line-strong text-ink-300 transition-colors hover:border-emerald-400 hover:text-emerald-400"
-            >
-              <LinkedinIcon className="size-4" />
-            </a>
+            
             <a
               href={SITE.social.github}
               target="_blank"
