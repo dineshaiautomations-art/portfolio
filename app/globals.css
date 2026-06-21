@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Color system ─────────────────────────────────────────────── */
+  --color-black: #050706;
+  --color-raised: #0b0f0d;
+  --color-surface: #0e1411;
+
+  --color-emerald-400: #34d399;
+  --color-emerald-500: #10b981;
+  --color-emerald-600: #059669;
+  --color-emerald-900: #052e22;
+
+  --color-ink-100: #f4f6f5;
+  --color-ink-300: #aab6af;
+  --color-ink-500: #707d76;
+  --color-ink-700: #3c453f;
+
+  --color-line: rgba(244, 246, 245, 0.08);
+  --color-line-strong: rgba(244, 246, 245, 0.14);
+  --color-line-accent: rgba(16, 185, 129, 0.35);
+
+  /* ── Type system ──────────────────────────────────────────────── */
+  --font-display: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  --font-body: var(--font-inter), "Inter", sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+
+  /* ── Radii ────────────────────────────────────────────────────── */
+  --radius-card: 1.25rem;
+  --radius-pill: 999px;
+
+  /* ── Easing ───────────────────────────────────────────────────── */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background: var(--color-black);
+  }
+
+  body {
+    background: var(--color-black);
+    color: var(--color-ink-100);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-emerald-500);
+    color: var(--color-black);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  /* Visible keyboard focus everywhere */
+  :focus-visible {
+    outline: 2px solid var(--color-emerald-400);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Glassmorphism card base, used across services / projects / why-cards */
+  .glass-card {
+    background: linear-gradient(
+      160deg,
+      rgba(244, 246, 245, 0.045),
+      rgba(244, 246, 245, 0.015)
+    );
+    border: 1px solid var(--color-line);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: var(--radius-card);
+  }
+
+  .glass-card:hover {
+    border-color: var(--color-line-accent);
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-emerald-400);
+  }
+
+  .section-pad {
+    padding-top: clamp(4.5rem, 9vw, 7.5rem);
+    padding-bottom: clamp(4.5rem, 9vw, 7.5rem);
+  }
+
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+}
+
+/* Subtle ambient glow used behind section headers (kept restrained — one accent, used deliberately) */
+.ambient-glow {
+  background: radial-gradient(
+    closest-side,
+    rgba(16, 185, 129, 0.16),
+    transparent 70%
+  );
+  filter: blur(40px);
+}
+
+/* Custom scrollbar to keep the dark theme consistent */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ink-700);
+  border-radius: var(--radius-pill);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-emerald-600);
+}
