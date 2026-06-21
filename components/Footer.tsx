@@ -1,6 +1,6 @@
 import { Mail } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/data";
-import { GithubIcon, LinkedinIcon } from "./icons";
+import { GithubIcon } from "./icons";
 
 export default function Footer() {
   return (
