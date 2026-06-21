@@ -4,7 +4,6 @@ import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Loader2, CheckCircle2, AlertCircle, Mail } from "lucide-react";
 import { CONTACT, SITE } from "@/lib/data";
-import { GithubIcon, LinkedinIcon } from "./icons";
 
 type Status = "idle" | "loading" | "success" | "error";
 
