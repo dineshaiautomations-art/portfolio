@@ -129,7 +129,6 @@ export default function Contact() {
 
         <div className="mt-10 flex items-center justify-center gap-5">
           <SocialLink href={`mailto:${SITE.email}`} icon={Mail} label="Email" />
-          <SocialLink href={SITE.social.linkedin} icon={LinkedinIcon} label="LinkedIn" />
           <SocialLink href={SITE.social.github} icon={GithubIcon} label="GitHub" />
         </div>
       </div>
