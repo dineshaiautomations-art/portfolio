@@ -39,7 +39,6 @@ export default function Footer() {
             >
               <Mail className="size-4" strokeWidth={1.75} />
             </a>
-            
             <a
               href={SITE.social.github}
               target="_blank"
