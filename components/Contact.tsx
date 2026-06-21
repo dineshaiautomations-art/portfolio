@@ -127,8 +127,8 @@ export default function Contact() {
         </motion.form>
 
         <div className="mt-10 flex items-center justify-center gap-5">
-          <SocialLink href={`mailto:${SITE.email}`} icon={Mail} label="Email" />
-          <SocialLink href={SITE.social.github} icon={GithubIcon} label="GitHub" />
+          <SocialLink href={`mailto:${SITE.email}`} icon={Mail}label="Email"/>
+          <SocialLink href={SITE.social.github} icon={GithubIcon}label="GitHub"/>
         </div>
       </div>
     </section>
