@@ -14,7 +14,6 @@ export const SITE = {
   email: "dinesh.aiautomations@gmail.com", // TODO: replace with real email
   bookingUrl: "https://calendly.com/dinesh-aiautomations", // TODO: replace with real booking link
   social: {
-         // TODO
     github: "https://github.com/dineshd", // TODO
   },
 };
