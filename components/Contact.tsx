@@ -63,4 +63,50 @@ export default function Contact() {
 
         <motion.form onSubmit={handleSubmit} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 1, 0.5, 1] }} className="glass-card p-6 sm:p-8 text-left">
           <div className="grid sm:grid-cols-2 gap-4">
-            <Field label="Name" />
+            <Field label="Name" name="name" placeholder="Your name" required />
+            <Field label="Email" name="email" type="email" placeholder="you@company.com" required />
+          </div>
+          <div className="mt-4">
+            <Field label="Company" name="company" placeholder="Company (optional)" />
+          </div>
+          <div className="mt-4">
+            <label className="block">
+              <span className="text-xs font-mono uppercase tracking-wider text-ink-500">Project Details</span>
+              <textarea name="projectDetails" required rows={4} placeholder="What would you like to automate?" className="mt-2 w-full resize-none rounded-xl border border-line-strong bg-black/40 px-4 py-3 text-sm text-ink-100 placeholder:text-ink-700 outline-none transition-colors focus:border-emerald-400" />
+            </label>
+          </div>
+
+          <button type="submit" disabled={status === "loading"} className="mt-6 inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-pill bg-emerald-500 px-6 py-3.5 text-sm font-medium text-black transition-transform hover:scale-[1.02] hover:bg-emerald-400 disabled:opacity-60">
+            {status === "loading" && <Loader2 className="size-4 animate-spin" />}
+            {status === "loading" ? "Sending…" : "Send Message"}
+          </button>
+
+          {status === "success" && <p className="mt-4 flex items-center gap-2 text-sm text-emerald-400"><CheckCircle2 className="size-4" />Message sent — I'll get back to you within 24 hours.</p>}
+          {status === "error" && <p className="mt-4 flex items-center gap-2 text-sm text-red-400"><AlertCircle className="size-4" />Something went wrong. Email me at {SITE.email}.</p>}
+        </motion.form>
+
+        <div className="mt-10 flex items-center justify-center gap-5">
+          <SocialLink href={`mailto:${SITE.email}`} icon={Mail} label="Email" />
+          <SocialLink href={SITE.social.github} icon={GithubIcon} label="GitHub" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Field({ label, name, type = "text", placeholder, required }: { label: string; name: string; type?: string; placeholder?: string; required?: boolean }) {
+  return (
+    <label className="block">
+      <span className="text-xs font-mono uppercase tracking-wider text-ink-500">{label}</span>
+      <input type={type} name={name} placeholder={placeholder} required={required} className="mt-2 w-full rounded-xl border border-line-strong bg-black/40 px-4 py-3 text-sm text-ink-100 placeholder:text-ink-700 outline-none transition-colors focus:border-emerald-400" />
+    </label>
+  );
+}
+
+function SocialLink({ href, icon: Icon, label }: { href: string; icon: React.ComponentType<{ className?: string }>; label: string }) {
+  return (
+    <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noopener noreferrer" : undefined} aria-label={label} className="flex size-11 items-center justify-center rounded-full border border-line-strong text-ink-300 transition-colors hover:border-emerald-400 hover:text-emerald-400">
+      <Icon className="size-4" />
+    </a>
+  );
+}
