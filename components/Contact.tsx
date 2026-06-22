@@ -4,7 +4,7 @@ import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Loader2, CheckCircle2, AlertCircle, Mail } from "lucide-react";
 import { CONTACT, SITE } from "@/lib/data";
-
+import { GithubIcon } from "./icons";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -49,7 +49,7 @@ export default function Contact() {
           </h2>
           <p className="mt-4 text-ink-300">{CONTACT.subheadline}</p>
 
-          <a
+          
             href={SITE.bookingUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -171,18 +171,18 @@ function SocialLink({
   label,
 }: {
   href: string;
-  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+  icon: React.ComponentType<{ className?: string }>;
   label: string;
 }) {
   return (
-    <a
+    
       href={href}
       target={href.startsWith("http") ? "_blank" : undefined}
       rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
       aria-label={label}
       className="flex size-11 items-center justify-center rounded-full border border-line-strong text-ink-300 transition-colors hover:border-emerald-400 hover:text-emerald-400"
     >
-      <Icon className="size-4.5" strokeWidth={1.75} />
+      <Icon className="size-4.5" />
     </a>
   );
 }
