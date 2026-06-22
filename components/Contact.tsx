@@ -63,4 +63,4 @@ export default function Contact() {
 
         <motion.form onSubmit={handleSubmit} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 1, 0.5, 1] }} className="glass-card p-6 sm:p-8 text-left">
           <div className="grid sm:grid-cols-2 gap-4">
-            <Field label="Name"
+            <Field label="Name" />
