@@ -81,7 +81,7 @@ export default function Contact() {
             {status === "loading" ? "Sending…" : "Send Message"}
           </button>
 
-          {status === "success" && <p className="mt-4 flex items-center gap-2 text-sm text-emerald-400"><CheckCircle2 className="size-4" />Message sent — I'll get back to you within 24 hours.</p>}
+         {status === "success" && (<p className="mt-4 flex items-center gap-2 text-sm text-emerald-400"><CheckCircle2 className="size-4" />Message sent — I&apos;ll get back to you within 24 hours. </p>)}
           {status === "error" && <p className="mt-4 flex items-center gap-2 text-sm text-red-400"><AlertCircle className="size-4" />Something went wrong. Email me at {SITE.email}.</p>}
         </motion.form>
 
